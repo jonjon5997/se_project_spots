@@ -2,11 +2,22 @@
   width: 413px;
 }
 
+.card__content .card:nth-last-child(-n + 3) {
+  border-bottom: 1px solid #000;
+}
+
+.card__title {
+  font-size: 20px;
+  line-height: 24px;
+  color: #212121;
+}
+
 .card__image {
   height: 413px;
   width: 413px;
   object-fit: cover;
   display: block;
+  border-radius: 8px;
 }
 
 .card__content {
@@ -22,4 +33,9 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+}
+
+.card__like-button:hover {
+  color: #212121;
+  opacity: 100%;
 }

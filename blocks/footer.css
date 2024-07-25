@@ -1,0 +1,14 @@
+.footer {
+  background-color: #fcf5e5; /* Light background color */
+  padding: 20px; /* Padding around the footer */
+  text-align: center; /* Center-align the text */
+  border-top: 1px solid #e7e7e7; /* Optional: top border for separation */
+}
+
+.footer__text {
+  margin: 60px 0;
+  color: #212121;
+  opacity: 70%;
+  font-size: 16px;
+  line-height: 1;
+}
