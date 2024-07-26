@@ -20,3 +20,7 @@ Spots is a fully responsive webpage where users can add and remove photos to and
 
 You can view the live site at [Spots](https://github.com/jonjon5997/se_project_spots.git).
 
+## Video description of project 3: Spots 
+
+https://drive.google.com/file/d/1dNvgFVS_x3qPvJAnqTWiLVTQ6hnw_Nqv/view?usp=drive_link
+
