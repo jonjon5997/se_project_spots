@@ -11,6 +11,7 @@
   height: 190px;
   width: 190px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .profile__column {
@@ -93,7 +94,6 @@
     height: 80px;
     width: 80px;
     margin-bottom: 12px;
-    border-radius: 8px;
   }
   .profile__name {
     font-size: 20px;
@@ -110,17 +110,12 @@
     margin: 0;
     width: 108px;
     height: 16px;
-    border: none;
-    background-color: #fcf5e5;
-    padding: 0;
   }
+
   .profile__add-button {
     margin: 0;
     width: 100%;
-    color: #fcf5e5;
-    background-color: #212121;
     height: 52px;
-    border-radius: 8px;
   }
   .profile__column {
     margin: 0 0 20px;

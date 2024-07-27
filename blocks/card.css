@@ -1,5 +1,5 @@
 .card {
-  width: 413px;
+  width: 100%;
 }
 
 .card__content .card:nth-last-child(-n + 3) {
@@ -10,6 +10,7 @@
   font-size: 20px;
   line-height: 24px;
   color: #212121;
+  margin: 12px 0 0;
 }
 
 .card__image {
@@ -33,9 +34,9 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+  margin: 12px 0 0;
 }
 
 .card__like-button:hover {
-  color: #212121;
   opacity: 100%;
 }
