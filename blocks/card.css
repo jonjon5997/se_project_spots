@@ -40,3 +40,41 @@
 .card__like-button:hover {
   opacity: 100%;
 }
+
+@media screen and (max-width: 627px) {
+  .card__image {
+    max-width: 288px;
+    max-height: 288px;
+  }
+
+  .card__content {
+    max-width: 288px;
+    max-height: 288px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 288px;
+  }
+  .card__title {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .card__like-button {
+    background-image: url(../images/heart.svg);
+    width: 20px;
+    height: 18px;
+    border: none;
+    background-color: transparent;
+    opacity: 40%;
+    margin: 12px 0 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
