@@ -11,3 +11,13 @@
   justify-content: center;
   gap: 40px 20px;
 }
+
+@media screen and (max-width: 627px) {
+  .cards__list {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-wrap: wrap; /* Wrap items if needed */
+    height: 100vh; /* Full viewport height to center vertically */
+  }
+}

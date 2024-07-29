@@ -1,5 +1,7 @@
 .card {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
 }
 
 .card__content .card:nth-last-child(-n + 3) {
@@ -19,6 +21,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  align-self: center;
 }
 
 .card__content {
@@ -39,4 +42,37 @@
 
 .card__like-button:hover {
   opacity: 100%;
+}
+
+@media screen and (max-width: 627px) {
+  .card {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Full width */
+  }
+
+  .card__image {
+    max-width: 288px;
+    max-height: 288px;
+  }
+
+  .card__content {
+    display: flex;
+    flex-direction: row; /* Vertical layout */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Center elements */
+    width: 100%;
+    max-width: 288px;
+    height: 100%; /* Full height */
+    max-height: 288px;
+  }
+
+  .card__title {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .card__like-button {
+  }
 }
