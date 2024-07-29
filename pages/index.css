@@ -7,3 +7,12 @@
 @import url(../blocks/cards.css);
 @import url(../blocks/card.css);
 @import url(../blocks//footer.css);
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

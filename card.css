@@ -1,7 +1,5 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
+  width: 100%;
 }
 
 .card__content .card:nth-last-child(-n + 3) {
@@ -21,7 +19,6 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
-  align-self: center;
 }
 
 .card__content {
