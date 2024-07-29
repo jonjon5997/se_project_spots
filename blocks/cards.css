@@ -5,19 +5,23 @@
 .cards__list {
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 40px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 413px);
   justify-content: center;
   gap: 40px 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(33, 33, 33, 0.4);
 }
 
 @media screen and (max-width: 627px) {
   .cards__list {
+    max-width: 288px;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    flex-wrap: wrap; /* Wrap items if needed */
-    height: 100vh; /* Full viewport height to center vertically */
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    gap: 22px;
   }
 }
