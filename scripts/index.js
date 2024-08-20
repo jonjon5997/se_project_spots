@@ -62,7 +62,6 @@ function handleAddCardSubmit(evt) {
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
   closeModal(cardModal);
-  //close the modal
 }
 
 function getCardElement(data) {
@@ -71,15 +70,20 @@ function getCardElement(data) {
     .querySelector(".card")
     .cloneNode(true);
 
+  const cardLikeButton = cardElement.querySelector(".card__like-button");
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
-  // select image elememnt
+  // TODO - slect the delete button
 
   cardNameEl.textContent = data.name;
   cardImage.alt = data.name;
   cardImage.src = data.link;
-  // assign values to the images src and alt attr
 
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__like-button_liked");
+  });
+  // TODO - set the listener on the delete button
+  // The handler should remove the card from the DOM - basics of dom sprint 4
   return cardElement;
 }
 
