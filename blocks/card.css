@@ -1,5 +1,6 @@
 .card {
   width: 100%;
+  position: relative;
 }
 
 .card__content .card:nth-last-child(-n + 3) {
@@ -35,10 +36,38 @@
   background-color: transparent;
   opacity: 40%;
   margin: 12px 0 0;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
-  opacity: 100%;
+  opacity: 1;
+}
+
+.card__like-button_liked {
+  background-image: url(../images/like-icon-liked.svg);
+  opacity: 1;
+}
+
+.card__like-button_liked:hover {
+  background-image: url(../images/like-icon-liked-hover.svg);
+}
+
+.card__delete-button {
+  background-image: url(../images/delete-button.svg);
+  width: 32px;
+  height: 32px;
+  position: absolute; /* Makes the button's position relative to the card */
+  top: 10px; /* Distance from the top of the card */
+  right: 10px; /* Distance from the right of the card */
+  background-color: transparent; /* Remove background color */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Change cursor to pointer when hovering over the button */
+  /* opacity: 0; Hide the button initially */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity changes */
+}
+
+.card__delete-button:hover {
+  background-image: url(../images/delete-button-hover.svg);
 }
 
 @media screen and (max-width: 627px) {
