@@ -23,6 +23,10 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
+  {
+    name: "Landscape View",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
 ];
 
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -51,7 +55,10 @@ const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
 
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
-
+const previewModal = document.querySelector("#preview-modal");
+const previewModalCloseButton = previewModal.querySelector(".modal__close");
+const previewModalImage = previewModal.querySelector(".modal__image");
+const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
 
 const cardsList = document.querySelector(".cards__list");
@@ -73,18 +80,38 @@ function getCardElement(data) {
   const cardLikeButton = cardElement.querySelector(".card__like-button");
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImage = cardElement.querySelector(".card__image");
-  // TODO - slect the delete button
+  const deleteButton = cardElement.querySelector(".card__delete-button");
 
   cardNameEl.textContent = data.name;
   cardImage.alt = data.name;
   cardImage.src = data.link;
+  console.log(data.link);
 
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like-button_liked");
   });
-  // TODO - set the listener on the delete button
-  // The handler should remove the card from the DOM - basics of dom sprint 4
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+  cardImage.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalImage.src = data.link;
+    //add text content
+    //add alt text
+  });
+  // Function to close the modal
+  previewModalCloseButton.addEventListener("click", () => {
+    closeModal(previewModal);
+  });
+
   return cardElement;
+}
+
+// Function to open the modal and display the image
+function openPreviewModal(imageSrc, imageAlt) {
+  previewModalImage.src = imageSrc;
+  previewModalImage.alt = imageAlt;
+  openModal(previewModal);
 }
 
 function openModal(modal) {
