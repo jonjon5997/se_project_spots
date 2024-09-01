@@ -60,6 +60,7 @@
   border: none;
   background-color: #fcf5e5;
   padding: 0;
+  cursor: pointer;
 }
 
 .profile__edit-button:hover {
@@ -75,6 +76,7 @@
   background-color: #212121;
   height: 52px;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {

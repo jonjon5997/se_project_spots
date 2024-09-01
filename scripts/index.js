@@ -24,7 +24,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
   {
-    name: "Landscape View",
+    name: "Golden Gate Bridge",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
 ];
@@ -56,7 +56,9 @@ const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
 const cardNameInput = cardModal.querySelector("#add-card-name-input");
 const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseButton = previewModal.querySelector(".modal__close");
+const previewModalCloseButton = previewModal.querySelector(
+  ".modal__close-button"
+);
 const previewModalImage = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
@@ -68,7 +70,10 @@ function handleAddCardSubmit(evt) {
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+
   closeModal(cardModal);
+
+  evt.target.reset();
 }
 
 function getCardElement(data) {
@@ -87,32 +92,38 @@ function getCardElement(data) {
   cardImage.src = data.link;
   console.log(data.link);
 
+  // Toggle like button
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like-button_liked");
   });
+
+  // Delete card
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
+
+  // Open modal and set image details
   cardImage.addEventListener("click", () => {
     openModal(previewModal);
     previewModalImage.src = data.link;
-    //add text content
-    //add alt text
-  });
-  // Function to close the modal
-  previewModalCloseButton.addEventListener("click", () => {
-    closeModal(previewModal);
-  });
 
+    previewModalImage.alt = data.name;
+
+    previewModalCaptionEl.textContent = data.name;
+  });
   return cardElement;
 }
+// Function to close the modal outside of getCard Element to avoid duplication
+previewModalCloseButton.addEventListener("click", () => {
+  closeModal(previewModal);
+});
 
 // Function to open the modal and display the image
-function openPreviewModal(imageSrc, imageAlt) {
-  previewModalImage.src = imageSrc;
-  previewModalImage.alt = imageAlt;
-  openModal(previewModal);
-}
+// function openPreviewModal(imageSrc, imageAlt) {
+//   previewModalImage.src = imageSrc;
+//   previewModalImage.alt = imageAlt;
+//   openModal(previewModal);
+// }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
