@@ -45,8 +45,8 @@
   margin: 0;
   background: transparent url(../images/close.svg) center no-repeat;
   position: absolute;
-  /* top: 24px; */
-  /* right: 50px; */
+  top: 24px;
+  right: 50px;
   width: 40px;
   height: 40px;
   border: none;
@@ -78,16 +78,6 @@
 .modal__close-button_type_preview:hover {
   opacity: 0.7;
 }
-
-/* .modal__close-button-image {
-  width: 40px;
-  height: 40px;
-  top: 20.49px;
-  left: 4.49px;
-  gap: 0px;
-  
-  cursor: pointer;
-} */
 
 .modal__title {
   margin: 0 0 32px;
@@ -185,73 +175,16 @@
   border-radius: 8px;
 }
 
-/* @media screen and (max-width: 768px) {
-  .modal__close-button {
-    top: -10px;
-    right: -36px;
-    width: 48px;
-    height: 48px;
-  }
-} */
+.modal__error {
+  display: block;
+  /*TODO use correct color and font style*/
+  color: red;
+}
 
-/* @media screen and (max-width: 627px) {
-  .modal {
-    padding: 0 10px;
-  }
-  .modal__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .modal__container {
-    padding: 12px;
-    max-width: 276px;
-  }
-  .modal__title {
-    font-size: 20px;
-    margin: 10px 0 34px;
-  }
-  .modal__caption {
-    line-height: 19.2px;
-    font-size: 16px;
-    font-weight: 500px;
-    margin: 0;
-    margin-right: auto;
-  }
-  .modal__close-button {
-    top: 12px;
-    right: 12px;
-    width: 32px;
-    height: 32px;
-  }
-  .modal__label {
-    margin-bottom: 24px;
-    font-size: 16px;
-    line-height: 16px;
-    margin: 0 0 24px;
-  }
-  .modal__submit-button {
-    width: 100%;
-  }
-  .modal__form {
-    max-width: 276px;
-    max-height: 248px;
-  }
-  .modal__input {
-    height: 48px;
-  }
-  .modal__image {
-    border-radius: 4px;
-    margin: 8px 0;
-  }
-  .modal__close_type_preview {
-    background-image: url(../images/close-button-preview.svg);
-    right: 10px;
-    top: -30px;
-  }
-} */
+.modal__input_type_error {
+  border: 1px solid red;
+}
+
 @media screen and (max-width: 627px) {
   .modal__container {
     max-width: 627px;
