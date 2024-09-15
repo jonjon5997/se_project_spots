@@ -128,6 +128,12 @@
   background: rgba(33, 33, 33, 0.8);
 }
 
+.modal__submit-button_type_error {
+  background-color: grey; /* Make the button background grey */
+  cursor: not-allowed; /* Change the cursor to indicate it's disabled */
+  opacity: 0.5;
+}
+
 .modal_opened {
   visibility: visible;
 }
