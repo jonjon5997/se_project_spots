@@ -1,3 +1,4 @@
+// TODO pass settings object to the validation functions that are in this file
 const initialCards = [
   {
     name: "Val Thorens",
@@ -65,6 +66,13 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
 
 const cardsList = document.querySelector(".cards__list");
+const resetValidation = (formEl, inputList, config) => {
+  inputList.forEach((inputElement) => {
+    hideInputError(formEl, inputElement, config);
+  });
+  const submitButton = formEl.querySelector(config.submitButtonSelector);
+  disableButton(submitButton, config);
+};
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
@@ -73,7 +81,12 @@ function handleAddCardSubmit(evt) {
   cardsList.prepend(cardElement);
 
   evt.target.reset();
-  disableButton(cardSubmitButton);
+  disableButton(cardSubmitButton, settings);
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   closeModal(cardModal);
 }
 
@@ -119,13 +132,6 @@ previewModalCloseButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-// Function to open the modal and display the image
-// function openPreviewModal(imageSrc, imageAlt) {
-//   previewModalImage.src = imageSrc;
-//   previewModalImage.alt = imageAlt;
-//   openModal(previewModal);
-// }
-
 function openModal(modal) {
   modal.classList.add("modal_opened");
 }
@@ -138,16 +144,22 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   closeModal(editModal);
 }
 
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
   editModalDescriptionInput.value = profileDescription.textContent;
-  resetValidation(editFormElement, [
-    editModalNameInput,
-    editModalDescriptionInput,
-  ]);
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   openModal(editModal);
 });
 
@@ -156,6 +168,11 @@ editModalCloseButton.addEventListener("click", () => {
 });
 
 cardModalButton.addEventListener("click", () => {
+  resetValidation(
+    editFormElement,
+    [editModalNameInput, editModalDescriptionInput],
+    settings
+  );
   openModal(cardModal);
 });
 
@@ -165,11 +182,6 @@ cardModalCloseButton.addEventListener("click", () => {
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
-
-// for (let i = 0; i < initialCards.length; i++) {
-//   const cardElement = getCardElement(initialCards[i]);
-//   cardsList.prepend(cardElement);
-// }
 
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
