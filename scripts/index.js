@@ -74,6 +74,43 @@ const resetValidation = (formEl, inputList, config) => {
   disableButton(submitButton, config);
 };
 
+// Function to close the modal
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+// Function to open the modal
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
+// Event listener for closing the modal on 'Escape' key press
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    const openModal = document.querySelector(".modal.modal_opened");
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
+});
+
+// Event listener for closing the modal by clicking on the overlay
+document.addEventListener("click", (event) => {
+  const openModal = document.querySelector(".modal.modal_opened");
+  if (openModal && event.target === openModal) {
+    closeModal(openModal);
+  }
+});
+
+// Adding close functionality to close buttons
+const closeButtons = document.querySelectorAll(".modal__close-button");
+closeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    closeModal(modal);
+  });
+});
+
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
