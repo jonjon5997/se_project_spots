@@ -215,7 +215,7 @@
   }
   .modal__title {
     font-size: 20px;
-    margin: 10px 0 34px;
+    margin: 10px 0 32px;
   }
   .modal__caption {
     line-height: 19.2px;
@@ -225,16 +225,17 @@
     margin-right: auto;
   }
   .modal__close-button {
-    top: 12px;
+    top: 14px;
     right: 12px;
     width: 32px;
     height: 32px;
   }
   .modal__label {
+    font-style: Poppins;
     margin-bottom: 24px;
     font-size: 16px;
-    line-height: 16px;
-    margin: 0 0 24px;
+    line-height: 17.6px;
+    margin: 0 0 16px;
   }
   .modal__submit-button {
     width: 100%;
@@ -245,6 +246,7 @@
   }
   .modal__input {
     height: 48px;
+    font-size: 16px;
   }
   .modal__image {
     border-radius: 4px;

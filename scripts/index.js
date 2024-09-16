@@ -66,13 +66,6 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
 
 const cardsList = document.querySelector(".cards__list");
-const resetValidation = (formEl, inputList, config) => {
-  inputList.forEach((inputElement) => {
-    hideInputError(formEl, inputElement, config);
-  });
-  const submitButton = formEl.querySelector(config.submitButtonSelector);
-  disableButton(submitButton, config);
-};
 
 // Function to close the modal
 function closeModal(modal) {
@@ -93,6 +86,8 @@ document.addEventListener("keydown", (event) => {
     }
   }
 });
+
+//remove event listener when modal is closed
 
 // Event listener for closing the modal by clicking on the overlay
 document.addEventListener("click", (event) => {

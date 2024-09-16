@@ -25,3 +25,9 @@
     gap: 22px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .cards__list {
+    gap: 20px;
+  }
+}
