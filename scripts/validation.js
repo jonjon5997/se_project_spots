@@ -55,14 +55,14 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 const disableButton = (buttonElement, config) => {
   buttonElement.disabled = true;
   buttonElement.classList.add(config.inactiveButtonClass);
-  buttonElement.classList.add("modal__submit-button_type_error");
+  buttonElement.classList.add(config.errorClass);
 };
 
 // Function to enable the submit button
 const enableButton = (buttonElement, config) => {
   buttonElement.disabled = false;
   buttonElement.classList.remove(config.inactiveButtonClass);
-  buttonElement.classList.remove("modal__submit-button_type_error");
+  buttonElement.classList.remove(config.errorClass);
 };
 
 // Function to set event listeners for input validation
