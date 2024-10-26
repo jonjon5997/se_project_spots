@@ -87,7 +87,7 @@ export const enableValidation = (config) => {
     setEventListeners(formEl, config);
   });
 };
-const resetValidation = (formEl, inputList, config) => {
+export const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((inputElement) => {
     hideInputError(formEl, inputElement, config);
   });

@@ -5,22 +5,15 @@ import {
 } from "../scripts/validation.js";
 import "./index.css";
 
-import avatar from "../images/avatar.jpg";
-import pencilIcon from "../images/pencil.svg";
+import { resetValidation } from "../scripts/validation.js";
+
+import pencil from "../images/pencil.svg";
 import plusIcon from "../images/plus.svg";
 import spotLogo from "../images/logo.svg";
+import avatar from "../images/avatar.jpg";
+import pencilIcon from "../images/pencil-icon.svg";
+
 import Api from "../utils/Api.js";
-
-const profileAvatarImg = document.querySelector(".profile__avatar");
-const pencilButtonImg = document.querySelector(".profile__edit-button img");
-const plusButtonImg = document.querySelector(".profile__add-button img");
-const spotLogoImg = document.querySelector(".header__logo");
-
-// Set the src attributes
-profileAvatarImg.src = avatar;
-pencilButtonImg.src = pencilIcon;
-plusButtonImg.src = plusIcon;
-spotLogoImg.src = spotLogo;
 
 // const initialCards = [
 //   {
@@ -53,26 +46,13 @@ spotLogoImg.src = spotLogo;
 //   },
 // ];
 
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "d9c42335-bb0f-4233-9212-06bd7c09b9fe",
-    "Content-Type": "application/json",
-  },
-});
+//avatar form elements
 
-api
-  .getAppInfo()
-  .then(([cards]) => {
-    console.log(cards);
-    cards.forEach((item) => {
-      const cardElement = getCardElement(item);
-      cardsList.append(cardElement);
-    });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarForm = avatarModal.querySelector(".modal__form");
+const avatarSubmitButton = avatarModal.querySelector(".modal__submit-button");
+const avatarCloseButton = avatarModal.querySelector(".modal__close-button");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const cardModalButton = document.querySelector(".profile__add-button");
@@ -86,7 +66,8 @@ const editModalNameInput = editModal.querySelector("#profile-name-input");
 const editModalDescriptionInput = editModal.querySelector(
   "#profile-description-input"
 );
-
+const avatarModalButton = document.querySelector(".profile__avatar-button");
+const profileAvatarImg = document.querySelector(".profile__avatar");
 const cardModal = document.querySelector("#add-card-modal");
 const cardForm = cardModal.querySelector(".modal__form");
 const cardSubmitButton = cardModal.querySelector(".modal__submit-button");
@@ -102,6 +83,49 @@ const previewModalImage = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "d9c42335-bb0f-4233-9212-06bd7c09b9fe",
+    "Content-Type": "application/json",
+  },
+});
+// destructure the second item in the callback of the .then()
+api
+  .getAppInfo()
+
+  .then(([cards, userInfo]) => {
+    console.log(cards); // Check if `cards` contains data
+    console.log(userInfo);
+    cards.forEach((item) => {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+      console.log(userInfo);
+    });
+    //handle user's information
+
+    const pencilButtonImg = document.querySelector(".profile__edit-button img");
+    const plusButtonImg = document.querySelector(".profile__add-button img");
+    const spotLogoImg = document.querySelector(".header__logo");
+    const pencilIconImg = document.querySelector(".profile__pencil-icon");
+    const userNameElement = document.querySelector(".profile__name");
+    const userDescriptionElement = document.querySelector(
+      ".profile__description"
+    );
+
+    // Set the src attributes
+    profileAvatarImg.src = avatar;
+    pencilButtonImg.src = pencil;
+    plusButtonImg.src = plusIcon;
+    spotLogoImg.src = spotLogo;
+    pencilIconImg.src = pencilIcon;
+
+    userNameElement.textContent = userInfo.name;
+    userDescriptionElement.textContent = userInfo.about;
+    profileAvatarImg.src = userInfo.avatar;
+  })
+  .catch(console.error);
 
 // Function to close the modal
 function closeModal() {
@@ -194,10 +218,32 @@ function getCardElement(data) {
 // Handle profile form submission
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-  profileName.textContent = editModalNameInput.value;
-  profileDescription.textContent = editModalDescriptionInput.value;
-  closeModal(editModal);
+  api
+    .editUserInfo({
+      name: editModalNameInput.value,
+      about: editModalDescriptionInput.value,
+    })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      profileAvatarImg.src = data.avatar; // Set the avatar image
+      closeModal(editModal);
+    })
+    .catch(console.error);
 }
+
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  api
+    .editAvatarInfo(avatarInput.value)
+    .then((data) => {
+      console.log(data.avatar);
+      profileAvatarImg.src = data.avatar; // Update the profile avatar
+      closeModal(avatarModal);
+    })
+    .catch(console.error);
+}
+// todo finish avatar submission handler
 
 // Open edit modal
 profileEditButton.addEventListener("click", () => {
@@ -215,10 +261,19 @@ profileEditButton.addEventListener("click", () => {
 cardModalButton.addEventListener("click", () => {
   openModal(cardModal);
 });
+//open avatar modal
+avatarModalButton.addEventListener("click", () => {
+  openModal(avatarModal);
+});
+// Close avatar modal when close button is clicked
+avatarCloseButton.addEventListener("click", () => {
+  closeModal();
+});
 
 // Add event listeners to forms
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 cardForm.addEventListener("submit", handleAddCardSubmit);
+avatarModal.addEventListener("submit", handleAvatarSubmit);
 
 //Enable validation by passing the settings object
 enableValidation(settings);
