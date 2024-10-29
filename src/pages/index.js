@@ -211,12 +211,13 @@ function getCardElement(data) {
   cardNameEl.textContent = data.name;
   cardImage.alt = data.name;
   cardImage.src = data.link;
+  // TODO if the card is liked, set the active class on the card
+  if (data.isLiked) {
+    cardLikeButton.classList.add("card__like-button_liked");
+  }
 
   // Toggle like button
-  cardLikeButton.addEventListener("click", (evt) =>
-    // {cardLikeButton.classList.toggle("card__like-button_liked");},
-    handleLike(evt, data._id)
-  );
+  cardLikeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   deleteButton.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id)
