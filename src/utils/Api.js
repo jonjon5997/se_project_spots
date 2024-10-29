@@ -85,6 +85,18 @@ class Api {
     });
   }
 
+  changeLikeStatus(id, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: isLiked ? "DELETE" : "PUT", // or 'PUT' depending on your API
+      headers: this._headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json(); // Return the updated user info
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
   // other methods for working with the API
   getAppInfo() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);

@@ -167,25 +167,35 @@ function handleEscapeKey(event) {
   }
 }
 
-// Add event listeners to close buttons
-const closeButtons = document.querySelectorAll(".modal__close-button");
-closeButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const modal = button.closest(".modal");
-    closeModal(modal);
-  });
-});
-
 // Handle card form submission
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  // add the card in the api
+  api.addCard(inputValues).then((data) => {
+    const cardElement = getCardElement(data);
+    cardsList.prepend(cardElement);
+  });
 
   evt.target.reset();
   disableButton(cardSubmitButton, settings); // Assuming disableButton function exists
   closeModal(cardModal);
+}
+
+function handleLike(evt, id) {
+  evt.target.classList.toggle("card__like-button_liked");
+  // 1. check whether card is currently liked or not
+  const isLiked = evt.target.classList.contains("card__like-button_liked");
+  // 2. call the chengeLikeStatus method passing it the appropriate arguments
+  api
+    .changeLikeStatus(id, isLiked)
+    .then((updatedCard) => {
+      // Optionally update the like count or any other UI elements based on `updatedCard`
+      console.log("Updated card data:", updatedCard);
+    })
+    .catch(console.error);
 }
 
 // Generate card element
@@ -203,11 +213,12 @@ function getCardElement(data) {
   cardImage.src = data.link;
 
   // Toggle like button
-  cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-button_liked");
-  });
+  cardLikeButton.addEventListener("click", (evt) =>
+    // {cardLikeButton.classList.toggle("card__like-button_liked");},
+    handleLike(evt, data._id)
+  );
 
-  deleteButton.addEventListener("click", (evt) =>
+  deleteButton.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id)
   );
 
@@ -297,6 +308,14 @@ avatarModalButton.addEventListener("click", () => {
 // Close avatar modal when close button is clicked
 avatarCloseButton.addEventListener("click", () => {
   closeModal();
+});
+// Add event listeners to close buttons
+const closeButtons = document.querySelectorAll(".modal__close-button");
+closeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    closeModal(modal);
+  });
 });
 
 // Add event listeners to forms
