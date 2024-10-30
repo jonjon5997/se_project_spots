@@ -99,7 +99,7 @@ class Api {
 
   // other methods for working with the API
   getAppInfo() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+    return Promise.all([this.getInitialCards(), this.getUserInfo(), ,]);
   }
 }
 

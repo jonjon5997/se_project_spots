@@ -125,7 +125,7 @@
   cursor: pointer;
 }
 
-.modal__submit-button:hover {
+.modal__submit-button .modal__submit-button:hover {
   background: rgba(33, 33, 33, 0.8);
 }
 
