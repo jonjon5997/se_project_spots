@@ -31,10 +31,42 @@
 
 .profile__avatar-container:hover .profile__avatar-button {
   visibility: visible;
+  background: #00000080;
+  cursor: pointer;
+  border-radius: 8px;
+  border-width: 1px;
 }
 
 .profile__avatar-button::after {
-  content: "edit avatar";
+  content: "";
+}
+
+.profile__avatar-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 8px;
+  height: 190px;
+  width: 190px;
+}
+
+.profile__pencil-icon {
+  position: absolute;
+  bottom: 0px; /* Adjust as needed to fine-tune the positioning */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent; /* Ensure transparent background */
+  cursor: pointer;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+
+  transition: background-color 0.3s ease;
+}
+
+.profile__pencil-icon:hover {
+  background-color: transparent; /* Transparent on hover */
 }
 
 .profile__column {
@@ -157,6 +189,13 @@
   .profile__column {
     margin: 0 0 20px;
     align-items: center;
+  }
+  .profile__avatar-container:hover .profile__avatar-button {
+    visibility: visible;
+    background: #00000080;
+    cursor: pointer;
+    border-radius: 8px;
+    border-width: 1px;
   }
 }
 

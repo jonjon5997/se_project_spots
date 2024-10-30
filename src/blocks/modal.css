@@ -192,6 +192,41 @@
   border: 1px solid red;
 }
 
+#delete-form {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+#delete-button {
+  background-color: #ff6565;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
+#delete-button:hover {
+  background-color: #ff3333;
+}
+
+#cancel-button {
+  color: #212121;
+  background-color: white;
+  border: 1px solid #212121;
+}
+
+#cancel-button:hover {
+  background-color: #212121;
+  color: white;
+}
+
+#delete-title {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}
+
 @media screen and (max-width: 627px) {
   .modal__container {
     max-width: 627px;
