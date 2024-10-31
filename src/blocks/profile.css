@@ -140,6 +140,9 @@
   background-color: #212121;
   opacity: 80%;
 }
+#mobile-pencil {
+  visibility: hidden;
+}
 
 @media screen and (max-width: 627px) {
   .profile {
@@ -154,9 +157,6 @@
     height: 80px;
     width: 80px;
     margin-bottom: 12px;
-  }
-  .profile__avatar-button {
-    visibility: visible;
   }
 
   .profile__avatar-button::after {
@@ -191,11 +191,33 @@
     align-items: center;
   }
   .profile__avatar-container:hover .profile__avatar-button {
-    visibility: visible;
+    visibility: hidden;
     background: #00000080;
     cursor: pointer;
     border-radius: 8px;
     border-width: 1px;
+  }
+  .profile__avatar-container {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .profile__name {
+    margin-top: 12px;
+  }
+  #mobile-pencil {
+    width: Hug (23.34px) px;
+    height: Hug (23.34px) px;
+    top: 52px;
+    left: 52px;
+    padding: 4px 0px 0px 0px;
+    gap: 8px;
+    border-radius: 6px 0px 0px 0px;
+    opacity: 0px;
+    display: block;
+    visibility: visible;
   }
 }
 

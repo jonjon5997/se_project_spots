@@ -12,6 +12,7 @@ import plusIcon from "../images/plus.svg";
 import spotLogo from "../images/logo.svg";
 import avatar from "../images/avatar.jpg";
 import pencilIcon from "../images/pencil-icon.svg";
+import mobilePencil from "../images/pencil-icon-mobile.png";
 
 import Api from "../utils/Api.js";
 
@@ -126,14 +127,16 @@ api
     const userDescriptionElement = document.querySelector(
       ".profile__description"
     );
-
+    const mobilePencilImg = document.querySelector("#mobile-pencil");
     // Set the src attributes
     profileAvatarImg.src = avatar;
     pencilButtonImg.src = pencil;
     plusButtonImg.src = plusIcon;
     spotLogoImg.src = spotLogo;
     pencilIconImg.src = pencilIcon;
+    mobilePencilImg.src = mobilePencil;
 
+    console.log(mobilePencil);
     userNameElement.textContent = userInfo.name;
     userDescriptionElement.textContent = userInfo.about;
     profileAvatarImg.src = userInfo.avatar;
