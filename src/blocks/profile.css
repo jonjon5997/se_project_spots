@@ -189,17 +189,20 @@
     width: 100%;
     height: 52px;
   }
+
   .profile__column {
     margin: 0 0 20px;
     align-items: center;
   }
+
   .profile__avatar-container:hover .profile__avatar-button {
-    visibility: hidden;
+    visibility: visible;
     background: #00000080;
     cursor: pointer;
     border-radius: 8px;
     border-width: 1px;
   }
+
   .profile__avatar-container {
     width: 80px;
     height: 80px;

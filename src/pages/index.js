@@ -209,7 +209,7 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   const inputValues = { name: cardNameInput.value, link: cardLinkInput.value };
   const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
+
   // add the card in the api
   api.addCard(inputValues).then((data) => {
     const cardElement = getCardElement(data);
