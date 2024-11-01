@@ -101,10 +101,12 @@
   -webkit-box-orient: vertical;
   max-width: 420px;
   font-weight: 500;
+  margin-bottom: 98px;
 }
 
 .profile__edit-button {
   margin-top: auto;
+  visibility: visible;
   font-size: 16px;
   line-height: 16px;
   font-weight: 500;
@@ -140,7 +142,7 @@
   background-color: #212121;
   opacity: 80%;
 }
-#mobile-pencil {
+.profile__edit-button #mobile-pencil {
   visibility: hidden;
 }
 
@@ -179,6 +181,7 @@
     margin: 0;
     width: 108px;
     height: 16px;
+    visibility: hidden;
   }
 
   .profile__add-button {
@@ -207,7 +210,8 @@
   .profile__name {
     margin-top: 12px;
   }
-  #mobile-pencil {
+  .profile__edit-button #mobile-pencil {
+    background-image: url("../images/pencil-icon-mobile.png");
     width: Hug (23.34px) px;
     height: Hug (23.34px) px;
     top: 52px;
@@ -218,6 +222,7 @@
     opacity: 0px;
     display: block;
     visibility: visible;
+    background: #21212199;
   }
 }
 

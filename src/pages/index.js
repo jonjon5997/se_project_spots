@@ -92,6 +92,7 @@ const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 //delete form elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const cancelButton = deleteModal.querySelector("#cancel-button");
 
 let selectedCard;
 let selectedCardId;
@@ -223,7 +224,7 @@ function handleAddCardSubmit(evt) {
 function handleLike(evt, id) {
   evt.target.classList.toggle("card__like-button_liked");
   // 1. check whether card is currently liked or not
-  const isLiked = evt.target.classList.contains("card__like-button_liked");
+  const isLiked = !evt.target.classList.contains("card__like-button_liked");
   // 2. call the chengeLikeStatus method passing it the appropriate arguments
   api
     .changeLikeStatus(id, isLiked)
@@ -278,20 +279,38 @@ function handleDeleteCard(cardElement, cardId) {
   openModal(deleteModal);
 }
 
+// function handleDeleteSubmit(evt) {
+//   evt.preventDefault();
+//   const cardSubmitButton = evt.submitter;
+//   setButtonText(cardSubmitButton, true, "Delete", "Deleting...");
+//   api
+//     .deleteCard(selectedCardId) //pass the id to the api function
+//     .then((data) => {
+//       console.log(data);
+
+//       //remove card from the DOM
+//       selectedCard.remove();
+
+//       // Close the delete confirmation modal (or any other related modal)
+//       closeModal(cardModal);
+//     })
+//     .catch(console.error)
+//     .finally(() => {
+//       setButtonText(cardSubmitButton, false, "Delete", "Deleting...");
+//     });
+// }
+
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const cardSubmitButton = evt.submitter;
   setButtonText(cardSubmitButton, true, "Delete", "Deleting...");
+
   api
-    .deleteCard(selectedCardId) //pass the id to the api function
+    .deleteCard(selectedCardId)
     .then((data) => {
       console.log(data);
-
-      //remove card from the DOM
-      selectedCard.remove();
-
-      // Close the delete confirmation modal (or any other related modal)
-      closeModal(cardModal);
+      selectedCard.remove(); // Ensure the card is removed from the DOM
+      closeModal(deleteModal); // Correctly close the delete modal
     })
     .catch(console.error)
     .finally(() => {
@@ -348,6 +367,10 @@ closeButtons.forEach((button) => {
     const modal = button.closest(".modal");
     closeModal(modal);
   });
+});
+
+cancelButton.addEventListener("click", () => {
+  closeModal(deleteModal);
 });
 
 // Add event listeners to forms
