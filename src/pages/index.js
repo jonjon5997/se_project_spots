@@ -218,14 +218,14 @@ function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const submitButton = evt.submitter;
   setButtonText(submitButton, true, "Delete", "Deleting...");
-
+  console.log(selectedCardId);
   api
     .deleteCard(selectedCardId)
     .then((data) => {
       console.log(data);
       selectedCard.remove(); // Ensure the card is removed from the DOM
       evt.target.reset(); // Reset the form only on success
-      disableButton(submitButton, settings); // Assuming disableButton function exists
+      // disableButton(submitButton, settings); // Assuming disableButton function exists
       closeModal(deleteModal); // Correctly close the delete modal
     })
     .catch(console.error)

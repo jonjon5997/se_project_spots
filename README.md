@@ -7,17 +7,20 @@ Spots is a fully responsive webpage where users can add and remove photos to and
 ## Technologies and Techniques Used
 
 - HTML and CSS
+- Javascript
+- API
+- OPP
 - Figma
 - Git for version control
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
+- [Link to the project on Figma](https://www.figma.com/design/mXGZ6wZ4QPKx5KjpHX9QCV/Sprint-9-Project%3A-Spots?node-id=2624-752&node-type=frame&t=P8xSDXkC5aKRkmiu-0)
 
 ## GitHub Pages Link
 
-You can view the live site at [Spots](https://jonjon5997.github.io/se_project_spots/).
+You can view the live site at [Spots](https://github.com/jonjon5997/se_project_spots).
 
-## Video description of project 3: Spots
+## Video description of project 9: Spots
 
-https://drive.google.com/file/d/1dNvgFVS_x3qPvJAnqTWiLVTQ6hnw_Nqv/view?usp=drive_link
+https://drive.google.com/file/d/1p1y0ev6-teRXAMo6zaf3ApyO-KTFfbqW/view?usp=drive_link
