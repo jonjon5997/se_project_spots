@@ -205,7 +205,7 @@ function handleAvatarSubmit(evt) {
       console.log(data.avatar);
       profileAvatarImg.src = data.avatar; // Update the profile avatar
       evt.target.reset(); // Reset the form only on success
-      disableButton(submitButton, settings); // Assuming disableButton function exists
+      disableButton(avatarSubmitButton, settings); // Assuming disableButton function exists
       closeModal(avatarModal);
     })
     .catch(console.error)
@@ -225,7 +225,6 @@ function handleDeleteSubmit(evt) {
       console.log(data);
       selectedCard.remove(); // Ensure the card is removed from the DOM
       evt.target.reset(); // Reset the form only on success
-      // disableButton(submitButton, settings); // Assuming disableButton function exists
       closeModal(deleteModal); // Correctly close the delete modal
     })
     .catch(console.error)
