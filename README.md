@@ -46,7 +46,7 @@ Babel: Transpiles ES6+ JavaScript into code that’s compatible with older brows
 
 ## GitHub Pages Link
 
-You can view the live site at [Spots](https://github.com/jonjon5997/se_project_spots).
+You can view the live site at [Spots](https://github.com/jonjon5997/se_project_spots/tree/project-9).
 
 ## Video description of project 9: Spots
 
