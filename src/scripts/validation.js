@@ -1,4 +1,4 @@
-const settings = {
+export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
@@ -52,7 +52,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
 };
 
 // Function to disable the submit button
-const disableButton = (buttonElement, config) => {
+export const disableButton = (buttonElement, config) => {
   buttonElement.disabled = true;
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.classList.add(config.errorClass);
@@ -81,19 +81,16 @@ const setEventListeners = (formEl, config) => {
 };
 
 // Function to enable validation for all forms on the page
-const enableValidation = (config) => {
+export const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);
   formList.forEach((formEl) => {
     setEventListeners(formEl, config);
   });
 };
-const resetValidation = (formEl, inputList, config) => {
+export const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((inputElement) => {
     hideInputError(formEl, inputElement, config);
   });
   const submitButton = formEl.querySelector(config.submitButtonSelector);
   disableButton(submitButton, config);
 };
-
-// Enable validation by passing the settings object
-enableValidation(settings);

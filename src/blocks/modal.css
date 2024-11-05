@@ -13,6 +13,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
 .modal_opened {
@@ -124,7 +125,7 @@
   cursor: pointer;
 }
 
-.modal__submit-button:hover {
+.modal__submit-button .modal__submit-button:hover {
   background: rgba(33, 33, 33, 0.8);
 }
 
@@ -189,6 +190,59 @@
 
 .modal__input_type_error {
   border: 1px solid red;
+}
+
+#delete-form {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+#delete-button {
+  background-color: #ff6565;
+  color: #212121;
+  border: 1px solid #212121;
+}
+
+#delete-button:hover {
+  background-color: #ff3333;
+}
+
+#cancel-button {
+  color: #212121;
+  background-color: white;
+  border: 1px solid #212121;
+}
+
+#cancel-button:hover {
+  background-color: #212121;
+  color: white;
+}
+
+#delete-title {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}
+
+.modal__close-button_type_delete {
+  opacity: 1;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  background: transparent url(../images/delete-close-button.svg) center
+    no-repeat;
+  position: absolute;
+  top: 0;
+  right: -50px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  z-index: 10;
+  background-size: contain;
+  transition: opacity 0.3s ease;
 }
 
 @media screen and (max-width: 627px) {
