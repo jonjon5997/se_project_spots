@@ -3,7 +3,6 @@
 ## Description
 
 Overview of the Spots App
-Certainly! Here’s an engaging way to explain the concept of your Spots App, along with its main goal and standout features:
 
 Overview of the Spots App
 Imagine a world full of hidden gems—amazing places that people pass by every day without noticing. The Spots App was created to help users share and discover these hidden “spots” in their city or beyond. Whether it's a quaint café, a secluded park, a picturesque mural, or a unique architecture corner, Spots is a digital map of personal recommendations, a place for people to post their favorite local finds, and for others to be inspired by them.
